@@ -12,7 +12,12 @@ export const AuthProvider = ({ children }) => {
     try {
       const savedUser = localStorage.getItem('user');
       const savedToken = localStorage.getItem('token');
-      if (savedUser && savedUser !== 'undefined' && savedToken && savedToken !== 'undefined') {
+      if (
+        savedUser &&
+        savedUser !== 'undefined' &&
+        savedToken &&
+        savedToken !== 'undefined'
+      ) {
         setUser(JSON.parse(savedUser));
         setToken(savedToken);
       }
@@ -22,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, [loading]);
+  }, []);
 
   const login = (userData, tokenData) => {
     setUser(userData);
@@ -38,6 +43,19 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
   };
 
+  if (loading) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <p style={{ color: '#9ca3af', fontSize: '14px' }}>Loading...</p>
+      </div>
+    );
+  }
+  
   return (
     <AuthContext.Provider value={{ user, token, login, logout, loading }}>
       {children}
