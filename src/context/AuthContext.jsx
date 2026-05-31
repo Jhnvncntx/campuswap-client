@@ -11,15 +11,16 @@ export const AuthProvider = ({ children }) => {
     try {
       const savedUser = localStorage.getItem('user');
       const savedToken = localStorage.getItem('token');
-      if (savedUser && savedUser !== 'undefined' && savedToken) {
+      if (savedUser && savedUser !== 'undefined' && savedToken && savedToken !== 'undefined') {
         setUser(JSON.parse(savedUser));
         setToken(savedToken);
       }
     } catch (e) {
       localStorage.removeItem('user');
       localStorage.removeItem('token');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
   const login = (userData, tokenData) => {
