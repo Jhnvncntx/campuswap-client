@@ -52,7 +52,7 @@ const App = () => {
           }
         />
         <Route
-          path="/inquiries/inbox"
+          path="/inquiries/inbox" 
           element={
             <ProtectedRoute>
               <ComingSoon page="Inbox" />

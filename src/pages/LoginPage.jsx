@@ -21,7 +21,7 @@ const LoginPage = () => {
     try {
       const { data } = await api.post('/auth/login', form);
       login(data.user, data.token);
-      setTimeout(() => navigate('/'), 100);
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong');
     } finally {
