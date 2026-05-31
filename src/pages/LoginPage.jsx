@@ -41,8 +41,8 @@ const LoginPage = () => {
 
         {error && (
           <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg mb-4">
-            {error}
-          </div>
+          {error}
+        </div>
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
