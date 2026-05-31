@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("loading", loading);
     try {
       const savedUser = localStorage.getItem('user');
       const savedToken = localStorage.getItem('token');
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [loading]);
 
   const login = (userData, tokenData) => {
     setUser(userData);

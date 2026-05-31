@@ -40,10 +40,11 @@ const HomePage = () => {
       if (condition) params.condition = condition;
 
       const { data } = await api.get('/listings', { params });
-      setListings(data.listings);
-      setPagination(data.pagination);
+      setListings(data.listings || []);
+      setPagination(data.pagination || null);
     } catch (err) {
-      console.error(err);
+      console.error('fetchListings error:', err);
+      setListings([]);
     } finally {
       setLoading(false);
     }
