@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
@@ -15,9 +16,7 @@ const App = () => {
           path='/'
           element={
             <ProtectedRoute>
-              <div className='max-width-6xl mx-auto px-4 py-8'>
-                <p className='text-gray-500'>Home page coming soon...</p>
-              </div>
+              <HomePage />
             </ProtectedRoute>
           }
         />
